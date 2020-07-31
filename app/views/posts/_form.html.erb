@@ -1,0 +1,11 @@
+<%= form_for @post do |f| %>
+<p>
+  <% @post.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+  <%= f.text_area :content, placeholder: 'enter body text' %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SampleApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if @current_user %>
+      <li>
+
+        <!-- コードを追加し、ログイン中のユーザーのidを表示してください -->
+        <%= link_to @current_user.name, "/users/#{@current_user.id}" %>
+      </li>
+      <li>
+      <%= link_to '投稿一覧', posts_path %>
+      <%= link_to 'ユーザー一覧', users_path %>
+     <!-- ログアウト用のリンクを追加してください -->
+     <%= link_to "ログアウト", "/logout", method: :post, data: { confirm: 'ログアウトしてもよろしいですか？' } %>
+     </li>
+     <% else %>
+     <%= link_to '新規登録', new_user_path %>
+    <!-- ログインページへのリンクを作成してください -->
+    <%= link_to "ログイン", "/login" %>
+    <% end %>
+    <% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+  <div class="container">
+    <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">新規ユーザー登録</div>
+    <div class="form users-form">
+      <div class="form-body">
+
+
+        <% @user.errors.full_messages.each do |message| %>
+  <div class="form-error">
+    <%= message %>
+  </div>
+<% end %>
+        <%= form_for @user, url: users_path do |f| %>
+        <p>
+          ユーザー名<br>
+           <%= f.text_field :name, placeholder: '名前' %>
+        </p>
+        <p>
+          メールアドレス<br>
+           <%= f.text_field :email, placeholder: 'メアド' %>
+        </p>
+        <p>
+          パスワード<br>
+          <%= f.password_field :password, placeholder: 'パスワード' %>
+      </p>
+        <p>
+          <%= f.submit "新規登録"%>
+        </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
